@@ -6,11 +6,15 @@ public class SimilarityChecker {
 
         if(s1Length == s2Length)
             return 60;
-        if(s1Length >= s2Length * 2 || s2Length >= s1Length * 2)
+        if(isMorethanTwiceLength(s1Length, s2Length))
             return 0;
         if(s1Length > s2Length)
             return  (int)((1-(double) gapLength/ s2Length)*60);
         else
             return  (int)((1-(double) gapLength/ s1Length)*60);
+    }
+
+    private boolean isMorethanTwiceLength(int s1Length, int s2Length) {
+        return s1Length >= s2Length * 2 || s2Length >= s1Length * 2;
     }
 }
