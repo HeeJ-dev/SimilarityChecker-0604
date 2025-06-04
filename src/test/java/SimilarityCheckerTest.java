@@ -15,7 +15,7 @@ class SimilarityCheckerTest {
     void testGetScoreStringLength0Score() {
         SimilarityChecker similarityChecker = new SimilarityChecker();
         String s1 = "A";
-        String s2 = "BB";
+        String s2 = "BBB";
         double actual = similarityChecker.getScoreStringLength(s1, s2);
         assertEquals(0, actual);
     }
