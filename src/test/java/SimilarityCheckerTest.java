@@ -13,30 +13,94 @@ class SimilarityCheckerTest {
 
     @Test
     void testGetScoreStringLength100Score() {
-        String s1 = "ADS";
-        String s2 = "DSA";
-        int actual = similarityChecker.getScoreStringLength(s1, s2);
+        String A = "ADS";
+        String B = "DSA";
+        int actual = similarityChecker.getScoreStringLength(A, B);
         assertEquals(60, actual);
     }
     @Test
     void testGetScoreStringLength0Score() {
-        String s1 = "A";
-        String s2 = "BBB";
-        int actual = similarityChecker.getScoreStringLength(s1, s2);
+        String A = "A";
+        String B = "BBB";
+        int actual = similarityChecker.getScoreStringLength(A, B);
         assertEquals(0, actual);
     }
     @Test
-    void testGetScoreStringLengthPartialScoreLongerS1() {
-        String s1 = "AAABB";
-        String s2 = "BAA";
-        int actual = similarityChecker.getScoreStringLength(s1, s2);
+    void testGetScoreStringLengthPartialScoreLongerA() {
+        String A = "AAABB";
+        String B = "BAA";
+        int actual = similarityChecker.getScoreStringLength(A, B);
         assertEquals(20, actual);
     }
     @Test
-    void testGetScoreStringLengthPartialScoreLongerS2() {
-        String s1 = "AA";
-        String s2 = "AAE";
-        int actual = similarityChecker.getScoreStringLength(s1, s2);
+    void testGetScoreStringLengthPartialScoreLongerB() {
+        String A = "AA";
+        String B = "AAE";
+        int actual = similarityChecker.getScoreStringLength(A, B);
         assertEquals(30, actual);
+    }
+
+    @Test
+    void testGetScoreAlpha100ScoreSameLength() {
+        String A = "ASD";
+        String B = "DSA";
+        int actual = similarityChecker.getScoreAlpha(A, B);
+        assertEquals(40, actual);
+    }
+    @Test
+    void testGetScoreAlpha100ScoreLongerA() {
+        String A = "AAABB";
+        String B = "BA";
+        int actual = similarityChecker.getScoreAlpha(A, B);
+        assertEquals(40, actual);
+    }
+    @Test
+    void testGetScoreAlpha100ScoreLongerB() {
+        String A = "BA";
+        String B = "AAABB";
+        int actual = similarityChecker.getScoreAlpha(A, B);
+        assertEquals(40, actual);
+    }
+    @Test
+    void testGetScoreAlpha0ScoreSameLength() {
+        String A = "AA";
+        String B = "BB";
+        int actual = similarityChecker.getScoreAlpha(A, B);
+        assertEquals(0, actual);
+    }
+    @Test
+    void testGetScoreAlpha0ScoreLongerA() {
+        String A = "AA";
+        String B = "B";
+        int actual = similarityChecker.getScoreAlpha(A, B);
+        assertEquals(0, actual);
+    }
+    @Test
+    void testGetScoreAlpha0ScoreLongerB() {
+        String A = "A";
+        String B = "BB";
+        int actual = similarityChecker.getScoreAlpha(A, B);
+        assertEquals(0, actual);
+    }
+    @Test
+    void testGetScoreAlphaPartialScoreSameLength() {
+        String A = "AAC";
+        String B = "AAE";
+        int actual = similarityChecker.getScoreAlpha(A, B);
+        assertEquals(13, actual);
+    }
+    @Test
+    void testGetScoreAlphaPartialScoreLongerA() {
+        String A = "AAE";
+        String B = "AA";
+        int actual = similarityChecker.getScoreAlpha(A, B);
+        assertEquals(20, actual);
+    }
+    @Test
+    void testGetScoreAlphaPartialScoreLongerB() {
+        String A = "AAU";
+        String B = "AAAB";
+        int actual = similarityChecker.getScoreAlpha(A, B);
+        assertEquals(13, actual);
     }
 }
